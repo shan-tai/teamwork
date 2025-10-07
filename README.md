@@ -56,29 +56,29 @@ gantt
 ```
 
 ```mermaid
-graph TD
-    %% === 專題 PERT / CPM 圖 ===
-    %% 日期範圍：2025/10/6 - 2025/12/21
+gantt
+    title 專案甘特圖（2025/10/1～2025/12/21）
+    dateFormat  YYYY-MM-DD
+    axisFormat  %m/%d
+    section 計畫階段
+    研擬計畫               :a1, 2025-10-01, 5d
+    文獻探討               :a2, after a1, 7d
+    系統需求分析           :a3, after a2, 7d
 
-    A1[1. 研擬計畫<br/>(D)] --> A2[2. 文獻探討<br/>(A,D)]
-    A2 --> A3[3. 系統需求分析<br/>(B,D)]
-    A3 --> B1[4. UI/UX 介面設計<br/>(C)]
-    A2 --> B2[5. 資料集準備<br/>(A)]
-    B2 --> C1[6. 模型建立與測試<br/>(A)]
-    A3 --> C2[7. API 開發與資料串接<br/>(B)]
-    A3 --> C3[8. 後端架構建置<br/>(B)]
-    C1 --> C2
-    C1 --> C3
-    C2 --> C4[9. 系統功能與資料庫設計<br/>(B,C)]
-    C3 --> C4
-    C4 --> D1[10. 系統整合與測試<br/>(全體)]
-    D1 --> D2[11. 系統優化及更改<br/>(A,B,C)]
-    D1 --> E1[12. 撰寫使用手冊<br/>(D)]
-    D2 --> E2[13. 最終驗收與簡報<br/>(全體)]
-    E1 --> E2
+    section 設計階段
+    UI/UX介面設計          :a4, after a3, 8d
+    資料集準備             :a5, after a3, 10d
+    後端架構建置           :a8, after a3, 10d
+    系統功能與資料庫設計   :a9, after a8, 12d
 
-    %% 標示起點與終點
-    start((Start)) --> A1
-    E2 --> end((End))
+    section 開發與測試
+    模型建立與測試         :a6, after a5, 12d
+    API開發與資料串接       :a7, after a6, 10d
+    系統整合與測試         :a10, after a7 a9, 10d
+    系統優化及更改         :a11, after a10, 10d
+
+    section 文件與驗收
+    撰寫使用手冊           :a12, after a10, 7d
+    最終驗收與簡報         :a13, after a11 a12, 11d
 
 ```
